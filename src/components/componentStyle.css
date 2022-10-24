@@ -1,0 +1,78 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.nav-item {
+    margin-right: 20px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.login-button{
+    background: linear-gradient(dodgerblue, royalblue);
+    color: white;
+    border-radius: 5px;
+    height: 35px;
+    width: 75px;
+    border: none;
+    font-size: 18px;
+}
+
+.blogs-container {
+    margin: auto;
+    width: 50%;
+}
+
+
+.blog-details {
+    text-align: left;
+    margin-bottom: 40px;
+    border: 1px solid lightgrey;
+    box-shadow: 2px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.login-container {
+    /* margin: auto;
+    height: 200px;
+    margin-bottom: 50px; */
+    width: 200px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.form-container {
+    margin-bottom: 50px;
+}
+
+.login-label {
+    text-align: left;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid dodgerblue;
+    font-size: 16px;
+}
