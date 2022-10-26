@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./componentStyle.css";
 import Blog from "./Blog";
 
-export default function Blogs({ onEdit }) {
+export default function Blogs({ onEdit, onDelete}) {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ export default function Blogs({ onEdit }) {
                 return <li key={blog._id}>{blog.title}</li>
             })} */}
       {blogs.map((blog, index) => {
-        return <Blog blog={blog} key={index} onEdit={onEdit} />;
+        return <Blog blog={blog} key={index} onEdit={onEdit} onDelete={onDelete} />;
       })}
     </div>
   );

@@ -14,7 +14,6 @@ export default function Edit({ blog }) {
 
   const handleSave = async (event) => {
     event.preventDefault()
-    console.table(_id, title, description, author, location)
     const auth = isAuthenticated();
     if (auth !== false) {
       try {

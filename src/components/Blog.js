@@ -2,7 +2,7 @@ import React from "react";
 import "./componentStyle.css";
 import { MdEdit, MdDeleteOutline } from "react-icons/md";
 
-export default function Blog({ blog, onEdit }) {
+export default function Blog({ blog, onEdit, onDelete }) {
   return (
     <div className="blog-container" key={blog._id}>
       <div className="blog-details">
@@ -12,8 +12,8 @@ export default function Blog({ blog, onEdit }) {
         </p>
         <p>{blog.description}</p>
         <div className="blog-buttons">
-          <MdEdit className="mdEdit" onClick={() => onEdit(blog)} />
-          <MdDeleteOutline className="mdDelete" onClick={() => {}} />
+          <MdEdit className="mdEdit" onClick={(event) => onEdit(blog)} />
+          <MdDeleteOutline className="mdDelete" onClick={(event) => onDelete(event, blog)} />
         </div>
       </div>
     </div>
