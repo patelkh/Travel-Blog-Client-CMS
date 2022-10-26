@@ -20,6 +20,9 @@
 }
 
 .login-button{
+    display: flex;
+    align-items: left;
+    justify-content: left;
     background: linear-gradient(dodgerblue, royalblue);
     color: white;
     border-radius: 5px;
@@ -29,9 +32,16 @@
     font-size: 18px;
 }
 
+.home-container{
+    margin: auto;
+    width: 600px;
+    text-align: left;
+}
+
+
 .blogs-container {
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
 }
 
 
@@ -45,6 +55,33 @@
     padding-right: 20px;
 }
 
+.blog-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 35px;
+    font-size: large;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.mdEdit, .mdDelete {
+    margin: 5px;
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    border-radius: 5px;
+    width: 35px;
+    height: 25px
+}
+
+.mdDelete {
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+
 .login-container {
     /* margin: auto;
     height: 200px;
@@ -55,7 +92,7 @@
 }
 
 .form-container {
-    margin-bottom: 50px;
+    margin-bottom: 50px;;
 }
 
 .login-label {

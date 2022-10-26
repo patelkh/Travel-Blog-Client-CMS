@@ -1,3 +1,46 @@
 * {
     background: whitesmoke
 }
+.edit-container {
+    margin: auto;
+    width: 600px;
+}
+
+.edit-form-container {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 1px 1px lavender;
+}
+
+.edit-form {
+    padding: 20px;
+    display: block;
+}
+
+.edit-input, .edit-label {
+    width: 500px
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+textarea {
+    border-radius: 5px;
+    border: 1px solid dodgerblue;
+    margin-bottom: 16px;
+}
+
+.edit-save-button{
+    background: linear-gradient(dodgerblue, royalblue);
+    color: white;
+    border-radius: 5px;
+    height: 35px;
+    width: 75px;
+    border: none;
+    font-size: 18px;
+    text-align: center;
+}
