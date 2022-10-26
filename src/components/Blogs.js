@@ -1,24 +1,39 @@
 import React, { useEffect, useState } from "react";
+import { isAuthenticated } from "../auth/authHelper";
+import { useNavigate } from "react-router-dom";
 import "./componentStyle.css";
 import Blog from "./Blog";
 
-export default function Blogs({onEdit}) {
+export default function Blogs({ onEdit }) {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   const fetchBlogs = async () => {
-    const response = await fetch(
-      "https://kays-travel-blog-api.herokuapp.com/blogs/view"
-    );
-    const data = await response.json();
-    setBlogs(data);
+    const auth = isAuthenticated();
+    if (auth !== false) {
+      try {
+        const response = await fetch("http://localhost:8080/api/blogs", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + auth,
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+          },
+        });
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        console.log(error);
+        navigate("/");
+      }
+    }
   };
 
   //get blogs
   useEffect(() => {
-    fetchBlogs().catch(console.error);
+    fetchBlogs();
   }, []);
-
-  
 
   return (
     <div className="blogs-container">

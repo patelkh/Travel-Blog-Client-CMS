@@ -1,37 +1,62 @@
 import React, { useState } from "react";
+import { isAuthenticated } from "../auth/authHelper";
+import { useNavigate } from "react-router-dom";
+
 import "./pageStyle.css";
 
 export default function Edit({ blog }) {
+  const [_id, setId] = useState(blog._id);
   const [title, setTitle] = useState(blog.title);
   const [description, setDes] = useState(blog.description);
   const [author, setAuthor] = useState(blog.author);
   const [location, setLocation] = useState(blog.location);
+  const navigate = useNavigate();
 
-  //
-  // const auth = isAuthenticated();
-  // if (!auth) {
-  //   const response = await fetch(
-  //     `https://kays-travel-blog-api.herokuapp.com/${_id}`,
-  //     {
-  //       method: "POST",
-  //       body: JSON.stringify({}),
-  //       headers: { Authorization: "Bearer " + auth },
-  //     }
-  //   );
-  //   if (response.status === 200) {
-  //     alert("Saved successfully!");
-  //   } else {
-  //     alert("Save unsuccessfull!");
-  //   }
-  //   navigate("/home");
-  // }
-  //
+  const handleSave = async (event) => {
+    event.preventDefault()
+    console.table(_id, title, description, author, location)
+    const auth = isAuthenticated();
+    if (auth !== false) {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/update/${_id}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              blog_id: _id,
+              title: title,
+              description: description,
+              author: author,
+              location: location,
+            }),
+            headers: {
+              Authorization: "Bearer " + auth,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+            },
+          }
+        );
+        if (response.status === 200) {
+          alert("Saved successfully!");
+          navigate("/home");
+        } else {
+          alert("Save unsuccessfull!");
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Server is down. Try again later.")
+        navigate("/home");
+      }
+    }
+  };
 
   return (
     <div className="edit-container">
       <h1>Edit</h1>
       <div className="edit-form-container">
-        <form className="edit-form">
+        <form onSubmit={handleSave} className="edit-form">
           <label className="edit-label">
             Title:
             <input
@@ -39,7 +64,8 @@ export default function Edit({ blog }) {
               type="text"
               value={title}
               name={title}
-              onChange={(e) => setTitle(e.target.value)}/>
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </label>
           <label className="edit-label">
             Description:
@@ -73,7 +99,9 @@ export default function Edit({ blog }) {
               onChange={(e) => setLocation(e.target.value)}
             />
           </label>
-          <button className="edit-save-button" onClick={() => {}}>Save</button>
+          <button className="edit-save-button" onClick={() => {}}>
+            Save
+          </button>
         </form>
       </div>
     </div>
