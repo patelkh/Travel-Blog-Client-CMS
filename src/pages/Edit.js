@@ -98,7 +98,7 @@ export default function Edit({ blog }) {
               onChange={(e) => setLocation(e.target.value)}
             />
           </label>
-          <button className="edit-save-button" onClick={() => {}}>
+          <button className="edit-save-button">
             Save
           </button>
         </form>

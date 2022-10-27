@@ -12,8 +12,8 @@ export default function Blog({ blog, onEdit, onDelete }) {
         </p>
         <p>{blog.description}</p>
         <div className="blog-buttons">
-          <MdEdit className="mdEdit" onClick={(event) => onEdit(blog)} />
-          <MdDeleteOutline className="mdDelete" onClick={(event) => onDelete(event, blog)} />
+          <MdEdit className="mdEdit" onClick={() => onEdit(blog)} />
+          <MdDeleteOutline className="mdDelete" onClick={() =>onDelete(blog)} />
         </div>
       </div>
     </div>
