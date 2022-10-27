@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { isAuthenticated } from "../auth/authHelper";
 import { useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../auth/authHelper";
 
 import "./pageStyle.css";
 
@@ -18,7 +18,7 @@ export default function Edit({ blog }) {
     if (auth !== false) {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/update/${_id}`,
+          `https://kays-travel-blog-api.herokuapp.com/api/update/${_id}`,
           {
             method: "POST",
             body: JSON.stringify({

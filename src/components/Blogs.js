@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { isAuthenticated } from "../auth/authHelper";
 import { useNavigate } from "react-router-dom";
-import "./componentStyle.css";
+import { isAuthenticated } from "../auth/authHelper";
 import Blog from "./Blog";
+import "./componentStyle.css";
 
 export default function Blogs({ onEdit, onDelete}) {
   const [blogs, setBlogs] = useState([]);
@@ -12,7 +12,7 @@ export default function Blogs({ onEdit, onDelete}) {
     const auth = isAuthenticated();
     if (auth !== false) {
       try {
-        const response = await fetch("http://localhost:8080/api/blogs", {
+        const response = await fetch("https://kays-travel-blog-api.herokuapp.com/api/blogs", {
           method: "POST",
           headers: {
             Authorization: "Bearer " + auth,

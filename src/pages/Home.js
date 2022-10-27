@@ -1,8 +1,9 @@
 import React from "react";
-import Blogs from "../components/Blogs";
-import "./pageStyle.css";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../auth/authHelper";
+import Blogs from "../components/Blogs";
+import "./pageStyle.css";
+
 
 export default function Home({ setBlogToEdit }) {
   const navigate = useNavigate();
@@ -12,11 +13,11 @@ export default function Home({ setBlogToEdit }) {
     navigate("/edit");
   }
 
-  const onDelete = async (event, blog) => {
+  const onDelete = async (blog) => {
     try {
       const auth = isAuthenticated();
       if (auth !== false) {
-        const response = fetch(`http://localhost:8080/api/delete/${blog._id}`, {
+        const response = await fetch(`https://kays-travel-blog-api.herokuapp.com/api/delete/${blog._id}`, {
           method: "POST",
           body: JSON.stringify({
             blog_id: blog._id,
@@ -29,7 +30,8 @@ export default function Home({ setBlogToEdit }) {
             "Access-Control-Allow-Credentials": "true",
           },
         });
-        // window.location.reload();
+
+        window.location.reload();
       }
     } catch (error) {
       window.location.reload() 

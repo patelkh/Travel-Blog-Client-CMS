@@ -15,12 +15,11 @@ function isAuthenticated() {
 }
 
 //Clear credentials
-function clearJWT(callback) {
+function clearJWT() {
     if(typeof window != "undefined") {
-        sessionStorage.remoteItem('jwt')
-        callback()
+        sessionStorage.removeItem('jwt')
         //signout
     }
 }
 
-export { authenticate, isAuthenticated };
+export { authenticate, isAuthenticated, clearJWT};

@@ -1,10 +1,9 @@
-import React from "react";
-import "./componentStyle.css";
-import { authenticate } from "../auth/authHelper";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authenticate } from "../auth/authHelper";
+import "./componentStyle.css";
 
-export default function Login() {
+export default function Login({setIsVerified}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("Success");
@@ -36,7 +35,7 @@ export default function Login() {
       return
     }
     try {
-      let response = await fetch("http://localhost:8080/api/login", {
+      let response = await fetch("https://kays-travel-blog-api.herokuapp.com/api/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -49,6 +48,7 @@ export default function Login() {
       let data = await response.json();
       if (data.message === "Success") {
         authenticate(data.token);
+        setIsVerified(true)
         NavigateToHome();
       } else {
         setErrorMessage(data.message);

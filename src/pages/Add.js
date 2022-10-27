@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import "./pageStyle.css";
-import { isAuthenticated } from "../auth/authHelper";
 import { useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../auth/authHelper";
+import "./pageStyle.css";
 
 export default function Add() {
   const form = useRef(null);
@@ -17,7 +17,7 @@ export default function Add() {
 
     if (auth !== false) {
       try {
-        const response = await fetch(`http://localhost:8080/blog/create`, {
+        const response = await fetch(`https://kays-travel-blog-api.herokuapp.com/api/blog/create`, {
           method: "POST",
           body: data,
           headers: {
@@ -48,7 +48,7 @@ export default function Add() {
           <input className="add-input"  type="text" name="title" />
 
           <label className="add-label">Description: </label>
-          <textarea className="add-input"  cols="1" rows="10" type="text" name="description" />
+          <textarea className="add-input"  cols="1" rows="10" type="text" name="desc" />
 
           <label className="add-label">Author: </label>
           <input className="add-input"  type="text" name="author" />
