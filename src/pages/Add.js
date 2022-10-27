@@ -38,26 +38,27 @@ export default function Add() {
 
   return (
     <div className="add-container">
+      <h1>Add</h1>
       <div className="add-form-container">
-        <form ref={form} encType="multipart/form-data" onSubmit={handleAdd}>
-          <label>Select Image: </label>
-          <input type="file" name="image" />
+        <form className="add-form" ref={form} encType="multipart/form-data" onSubmit={handleAdd}>
+          <label className="add-label">Select Image: </label>
+          <input className="add-input" type="file" name="image" />
 
-          <label>Title: </label>
-          <input type="text" name="title" />
+          <label className="add-label">Title:* </label>
+          <input className="add-input"  type="text" name="title" />
 
-          <label>Description: </label>
-          <input type="text" name="description" />
+          <label className="add-label">Description: </label>
+          <textarea className="add-input"  cols="1" rows="10" type="text" name="description" />
 
-          <label>Author: </label>
-          <input type="text" name="author" />
+          <label className="add-label">Author: </label>
+          <input className="add-input"  type="text" name="author" />
 
-          <label>Location: </label>
-          <input type="text" name="location" />
+          <label className="add-label">Location: </label>
+          <input className="add-input"  type="text" name="location" />
 
-          <label>Date: </label>
-          <input type="date" name="date" />
-          <button>Add</button>
+          <label className="add-label">Date: </label>
+          <input className="add-input"  type="date" name="date" />
+          <button className="add-save-button">Add</button>
         </form>
       </div>
     </div>
